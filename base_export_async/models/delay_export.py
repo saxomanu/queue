@@ -138,5 +138,5 @@ class DelayExport(models.Model):
         time_to_live = self.env['ir.config_parameter'].sudo(). \
             get_param('attachment.ttl', 7)
         date_today = fields.Date.today()
-        date_to_delete = date_today + relativedelta(days=-int(time_to_live))
+        date_to_delete = date_today + relativedelta(days=+int(time_to_live))
         self.search([('create_date', '<=', date_to_delete)]).unlink()
